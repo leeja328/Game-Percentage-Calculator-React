@@ -66,14 +66,15 @@ export default function ImgMediaCard() {
 
     let text = "";
     
-    for (let i = 0; i < summary.length; i++) {
-      text += summary[i] + "<br>";
+    for (let i = 0; i < summary.length - 1; i++) {
+      text += (i+1) + '. ' + summary[i] + "\n";
     }
     
+    if (text === "") {
+      text = "No drops obtained :( try again!"
+    }
 
     setUpdated2(document.getElementById("here").innerHTML = text);
-    console.log(text);
-    // setUpdated(summary);
   };
 
   const handleClick = () => {
@@ -81,39 +82,44 @@ export default function ImgMediaCard() {
   };
   
   return (
-    <><Card sx={{ maxWidth: 350 }}>
-      <CardMedia
-        alt="green iguana"
-        height="300"
-        component="img" src={image1} />
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          Calculate Your Purple Chance!
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          Enter your percent chance of receiving a purple and the number of raids you want to calculate it for below.
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <Input type="text"
-                id="message"
-                name="message"
-                onChange={handleChange}
-                value={message} placeholder='% Chance'></Input>
-        <Input type="text"
-                id="message2"
-                name="message2"
-                onChange={handleChange2}
-                value={message2} placeholder='# of Raids'></Input>
-        <Button size="small" onClick={handleClick2}>Calculate</Button>
-        <Button size="small"onClick={handleClick}>Sum</Button>
-      </CardActions>
-    </Card>
-    <div>
-      <h1>Summed Result: {updated}</h1>
-      <h1 id="here">Result: {updated2}</h1>
-      
-    </div></>
+    <>
+    <div class="container">
+      <div class="row">
+        <Card sx={{ maxWidth: 350 }}>
+          <CardMedia
+            alt="green iguana"
+            height="300"
+            component="img" src={image1} />
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="div">
+              Calculate Your Purple Chance!
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              Enter your percent chance of receiving a purple and the number of raids you want to calculate it for below.
+            </Typography>
+          </CardContent>
+          <CardActions>
+            <Input type="text"
+                    id="message"
+                    name="message"
+                    onChange={handleChange}
+                    value={message} placeholder='% Chance'></Input>
+            <Input type="text"
+                    id="message2"
+                    name="message2"
+                    onChange={handleChange2}
+                    value={message2} placeholder='# of Raids'></Input>
+            <Button size="small" onClick={handleClick2}>Calculate</Button>
+            <Button size="small"onClick={handleClick}>Sum</Button>
+          </CardActions>
+        </Card>
+        <div>
+          <h3 class="a" id="here">{updated2}</h3>
+        </div> 
+      </div>
+    </div>
+    
+    </>
   );
 }
 

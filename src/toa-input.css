@@ -1,0 +1,14 @@
+.container {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+
+.row {
+
+}
+
+h3.a {
+    white-space: pre;
+  }
